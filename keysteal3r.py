@@ -92,7 +92,7 @@ for char in string.ascii_uppercase:
     if os.path.exists(f"{char}:\\"):
         print(f"Found {char}:\\")
 
-def directory_searcher(path):
+def directory_explorer(path):
     drive_paths = []
     for char in string.ascii_uppercase:
         if os.path.exists(f"{char}:\\"):
@@ -100,8 +100,7 @@ def directory_searcher(path):
         for letter in drive_paths:
             if os.path.exists(f"{letter}:\\{path}"):
                 return 
- r"Users\JohnBradshawCantos\Desktop\mremoveinst.txt"
-file = directory_searcher(path=)    
+file = directory_explorer(path=)    
 while run:
     print("Starting program...")
     add_to_startup(file="")
