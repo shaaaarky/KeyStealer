@@ -10,10 +10,7 @@ def encrypt(file, key):
     with open(f"{file}", "wb") as item:
         item.write(encrypted_data)
     # Adds .enc extension to encrypted file
-    file.replace(".txt", "")
     
-    enc = file + ".enc"
-    os.rename(file, enc)
         
 def decrypt(file, key):
     # Decrypts the data. Gives error if you give it a different key to the one the data was encrypted with.
@@ -21,11 +18,10 @@ def decrypt(file, key):
         f = fernet.Fernet(key)
         encrypted_data = item.read()
         decrypted_data = f.decrypt(encrypted_data)
-
     with open(f"{file}", "wb") as item:
+        # Writes the decrypted data to file
         item.write(decrypted_data)
-    txt = file + ".txt"
-    os.rename(file, txt)
+
 
 def cat(file):
     # Does the same as the cat command in Linux
@@ -41,23 +37,10 @@ def key_gen():
         keys.write(f"{decoded_key}\n")
     keys.close()
 
-def last_key():
-    # Finds the last key in keys.txt an returns it
-    # Unsure about the time effectiveness of this method to find the last line in a .txt
-    with open("keys.txt", "r") as keys:
-        l = []
-        for line in keys:
-            l.append(line)
-        keys.close()
-        return l[-1]
-
 def check_for_encryption(file):
     return file.endswith(".enc")
 
-key = last_key()
+key = b'KNKjfQQof6MYrL9SGwV9dFDf9Gquw4VrzrE3G7ljoDk='
 encrypt_test = "crypted.txt"
 
-encrypt()
-print(check_for_encryption(encrypt_test))
-# decrypt(encrypt_test, key)
-
+decrypt(encrypt_test, key)
